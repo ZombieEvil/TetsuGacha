@@ -10,6 +10,7 @@ import asyncio
 import logging
 import os
 import sys
+import os
 import argparse
 
 import discord
@@ -21,6 +22,9 @@ except ImportError:
     print("❌  Fichier config.py introuvable.")
     print("    Renomme 'config.example.py' en 'config.py' et remplis ton token Discord.")
     sys.exit(1)
+
+# Token sécurisé (lit d'abord la variable d'environnement Koyeb)
+DISCORD_TOKEN = os.getenv("DISCORD_TOKEN") or config.DISCORD_TOKEN
 
 from utils.storage import JSONStorage
 from utils.api_fetchers import CharacterFetcher
@@ -162,7 +166,7 @@ class TetsuGachaBot(commands.Bot):
 async def run_bot(use_dashboard: bool):
     bot = TetsuGachaBot(use_dashboard=use_dashboard)
     try:
-        await bot.start(config.DISCORD_TOKEN)
+        await bot.start(DISCORD_TOKEN)
     except discord.LoginFailure:
         log.error("Token Discord invalide.")
     finally:

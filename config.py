@@ -1,9 +1,11 @@
+import os
+
 # =====================================================
-# CONFIGURATION TetsuGacha - Renomme en config.py
+# CONFIGURATION TetsuGacha
 # =====================================================
 
-# --- TOKEN DISCORD ---
-DISCORD_TOKEN = "MTQ5NjMwMDk1MDY4Njc5ODAwNQ.G_Ciwj.TEhkaOYCwxO0jHdUA63qiKJDWAarfK2drT4Pmo"
+# --- TOKEN DISCORD (sécurisé) ---
+DISCORD_TOKEN = os.getenv("DISCORD_TOKEN", "METS_TON_TOKEN_DISCORD_ICI")
 
 # --- IDENTITÉ DU BOT ---
 BOT_NAME = "TetsuGacha"
@@ -11,7 +13,7 @@ BOT_TAGLINE = "Le gacha ultime de ton serveur"
 BOT_COLOR = 0xE91E63
 BOT_ACCENT_COLOR = 0xFFD700
 
-# --- CLÉS API (optionnelles sauf AniList qui est sans clé) ---
+# --- CLÉS API (optionnelles) ---
 TMDB_API_KEY = ""
 IGDB_CLIENT_ID = ""
 IGDB_CLIENT_SECRET = ""
@@ -27,18 +29,16 @@ CLAIM_COOLDOWN_MINUTES = 180
 CLAIM_REACT_TIME_SECONDS = 45
 MAX_WISHLIST_SIZE = 20
 
-# --- MONNAIE : TetsuToken (XP + argent) ---
+# --- MONNAIE : TetsuToken ---
 CURRENCY_NAME = "🪙"
 CURRENCY_NAME_LONG = "TetsuTokens"
 STARTING_CURRENCY = 500
-DAILY_REWARD = 200  # Récompense de base (modifiée par le streak)
+DAILY_REWARD = 200
 
-# --- GAINS DE TETSUTOKEN (système XP + argent) ---
-# Un roll qui rate (perso pas claim) rapporte un peu, un claim rapporte gros
-TOKENS_PER_ROLL_BASE = 5      # Tokens par roll (réagir)
-TOKENS_PER_CLAIM_BASE = 50    # Tokens par claim (gros bonus)
-TOKENS_WISHLIST_MULTIPLIER = 3.0  # x3 si le perso était sur la wishlist
-# Bonus selon rareté du perso claim
+# --- GAINS DE TETSUTOKEN ---
+TOKENS_PER_ROLL_BASE = 5
+TOKENS_PER_CLAIM_BASE = 50
+TOKENS_WISHLIST_MULTIPLIER = 3.0
 TOKENS_RARITY_MULTIPLIER = {
     "LEGENDARY": 5.0,
     "EPIC": 3.0,
@@ -47,40 +47,33 @@ TOKENS_RARITY_MULTIPLIER = {
     "COMMON": 1.0,
 }
 
-# --- STREAK DAILY (connexions consécutives) ---
-STREAK_BONUS_PER_DAY = 50     # +50 tokens par jour consécutif
-STREAK_MAX_BONUS = 500        # Plafond
-STREAK_RESET_HOURS = 48       # Si > 48h sans daily, le streak reset
-STREAK_MILESTONES = {         # Bonus rolls à certains paliers de streak
-    7: 3,    # 7 jours → +3 rolls bonus
-    14: 5,   # 14 jours → +5 rolls bonus
-    30: 10,  # 30 jours → +10 rolls bonus
-}
+# --- STREAK DAILY ---
+STREAK_BONUS_PER_DAY = 50
+STREAK_MAX_BONUS = 500
+STREAK_RESET_HOURS = 48
+STREAK_MILESTONES = {7: 3, 14: 5, 30: 10}
 
-# --- PITY SYSTEM (garanti après X rolls sans un bon perso) ---
-PITY_THRESHOLD = 20           # 20 rolls sans RARE+ → garanti RARE+ au 21e
-PITY_MIN_RARITY = "RARE"      # Rareté minimale garantie
+# --- PITY SYSTEM ---
+PITY_THRESHOLD = 20
+PITY_MIN_RARITY = "RARE"
 
-# --- AUTO-CLAIM (feature premium payante en tokens) ---
-MAX_AUTO_CLAIMS = 3            # Max 3 persos en auto-claim actifs par user
-AUTO_CLAIM_COST = 300          # Coût en tokens pour activer un auto-claim
-AUTO_CLAIM_COOLDOWN_HOURS = 6  # Entre 2 déclenchements d'auto-claim
+# --- AUTO-CLAIM ---
+MAX_AUTO_CLAIMS = 3
+AUTO_CLAIM_COST = 300
+AUTO_CLAIM_COOLDOWN_HOURS = 6
 
-# --- ÉVEIL DE PERSO (awaken) ---
-AWAKEN_COST = 500              # Coût en tokens pour éveiller un perso
-AWAKEN_VALUE_BONUS = 0.5       # +50% de valeur
+# --- ÉVEIL DE PERSO ---
+AWAKEN_COST = 500
+AWAKEN_VALUE_BONUS = 0.5
 
 # --- ÉVÉNEMENTS SERVEUR ---
-# Double tokens : multiplicateur appliqué aux gains pendant l'event
 EVENT_DOUBLE_TOKENS_MULTIPLIER = 2.0
-EVENT_MAX_DURATION_HOURS = 72      # Durée max d'un event en heures
-# Limited character : boost de chance pour qu'il apparaisse
-EVENT_LIMITED_BOOST_PERCENT = 15   # 15% de chance à chaque roll que ce soit le perso limited
-EVENT_LIMITED_VALUE_BONUS = 1.0    # +100% de valeur sur le perso limited
-# Rareté minimum pour qu'un perso puisse être tiré comme "limited"
+EVENT_MAX_DURATION_HOURS = 72
+EVENT_LIMITED_BOOST_PERCENT = 15
+EVENT_LIMITED_VALUE_BONUS = 1.0
 EVENT_LIMITED_MIN_RARITY = "RARE"
 
-# --- SHOP : ITEMS ACHETABLES ---
+# --- SHOP ---
 SHOP_ITEMS = {
     "rarity_protection": {
         "name": "Protection Rareté",
@@ -106,8 +99,8 @@ SHOP_ITEMS = {
 }
 
 # --- SHOWCASE ---
-SHOWCASE_GRID_SIZE = 3              # grille 3x3 = top 9 persos
-SHOWCASE_IMAGE_SIZE = 900           # taille en px de l'image (carrée)
+SHOWCASE_GRID_SIZE = 3
+SHOWCASE_IMAGE_SIZE = 900
 
 # --- RARETÉS ---
 RARITY_TIERS = {
