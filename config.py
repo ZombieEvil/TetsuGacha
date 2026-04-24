@@ -3,7 +3,7 @@
 # =====================================================
 
 # --- TOKEN DISCORD ---
-DISCORD_TOKEN = "MTQ5NjMwMDk1MDY4Njc5ODAwNQ.GpZckR.JC0_VZaGi4tVXHejl7jf-CpuIu2fEJmHec3IZo"
+DISCORD_TOKEN = "MTQ5NjMwMDk1MDY4Njc5ODAwNQ.G_Ciwj.TEhkaOYCwxO0jHdUA63qiKJDWAarfK2drT4Pmo"
 
 # --- IDENTITÉ DU BOT ---
 BOT_NAME = "TetsuGacha"
